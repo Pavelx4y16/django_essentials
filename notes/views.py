@@ -1,14 +1,12 @@
-from django.shortcuts import render
-from django.http import Http404
 from django.views.generic import ListView, DetailView, CreateView
 
+from notes.forms import NotesForm
 from notes.models import Notes
 
 
 class CreateNote(CreateView):
     template_name = "notes/note_creation_form.html"
-    model = Notes
-    fields = ['title', 'text']
+    form_class = NotesForm
     success_url = '/notes'
 
 
