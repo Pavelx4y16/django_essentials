@@ -1,14 +1,9 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>List all notes</title>
-</head>
-<body>
+{% extends "base.html" %}
+
+{% block content %}
     <ul>
       {% for note in notes %}
-        <li> {{note.title}}</li>
+        <li class="note-li"> {{note.title}}</li>
       {% endfor %}
     </ul>
-</body>
-</html>
+{% endblock %}
