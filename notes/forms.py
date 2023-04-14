@@ -16,7 +16,7 @@ class NotesForm(forms.ModelForm):
             'title': "Name your note",
             'text': "Describe your note"
         }
-        
+
     def clean_title(self):
         title = self.cleaned_data['title']
         if "Django" not in title:

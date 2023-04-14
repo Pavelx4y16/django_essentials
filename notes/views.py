@@ -1,11 +1,19 @@
-from django.views.generic import ListView, DetailView, CreateView
+from django.views.generic import ListView, DetailView, CreateView, UpdateView
 
 from notes.forms import NotesForm
 from notes.models import Notes
 
 
+class EditNote(UpdateView):
+    model = Notes
+    template_name = "notes/note_form.html"
+    form_class = NotesForm
+    success_url = '/notes'
+
+
 class CreateNote(CreateView):
-    template_name = "notes/note_creation_form.html"
+    model = Notes
+    template_name = "notes/note_form.html"
     form_class = NotesForm
     success_url = '/notes'
 
