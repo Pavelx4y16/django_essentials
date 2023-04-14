@@ -1,0 +1,12 @@
+{% extends "base.html" %}
+
+{% block title %}
+    New Note
+{% endblock %}
+
+{% block content %}
+  <form action="{% url 'note.new' %}" method="post"> {% csrf_token %}
+    {{ form }}
+    <button type="submit" class="btn btn-primary my-5"> Submit </button>
+  </form>
+{% endblock %}}
