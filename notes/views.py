@@ -1,7 +1,14 @@
-from django.views.generic import ListView, DetailView, CreateView, UpdateView
+from django.views.generic import ListView, DetailView, CreateView, UpdateView, DeleteView
 
 from notes.forms import NotesForm
 from notes.models import Notes
+
+
+class DeleteNote(DeleteView):
+    model = Notes
+    template_name = "notes/delete_note.html"
+    success_url = "/notes"
+    context_object_name = 'note'
 
 
 class EditNote(UpdateView):
