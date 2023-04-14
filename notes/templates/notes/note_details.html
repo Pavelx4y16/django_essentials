@@ -1,15 +1,16 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Note Details</title>
-</head>
-<body>
-  <h1> Note Details: </h1>
-  <ul>
-    <li> Note Title is '{{note.title}}' </li>
-    <li> Note Text is '{{note.text}}' </li>
-    <li> Creation date is '{{note.created}}' </li>
-  </ul>
-</body>
-</html>
+{% extends "base.html" %}
+
+{% block title %}
+    Note Details
+{% endblock %}
+
+{% block content %}
+  <div class="border round">
+    <h1 class="my-5"> {{ note.title }} </h1>
+    <p>
+      {{note.text}}
+      Creation date is '{{note.created}}'
+    </p>>
+  </div>
+  <a href="{% url 'notes.list' %}" class="btn btn-primary"> Go Back to notes list </a>
+{% endblock %}}
