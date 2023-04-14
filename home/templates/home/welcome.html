@@ -7,4 +7,5 @@
 {% block content %}
     <h1> Welcome to smartnotes!</h1>
     <p> Today is {{ today }} </p>
+    <a href="{% url 'notes.list' %}" class="btn btn-primary"> Get list of Notes </a>
 {% endblock %}
