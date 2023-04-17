@@ -1,3 +1,5 @@
+from django.contrib.auth.mixins import LoginRequiredMixin
+from django.http import HttpResponseRedirect
 from django.views.generic import ListView, DetailView, CreateView, UpdateView, DeleteView
 
 from notes.forms import NotesForm
@@ -24,11 +26,22 @@ class CreateNote(CreateView):
     form_class = NotesForm
     success_url = '/notes'
 
+    def form_valid(self, form):
+        self.object = form.save(commit=False)
+        self.object.user = self.request.user
+        self.object.save()
 
-class NoteList(ListView):
+        return HttpResponseRedirect(self.get_success_url())
+
+
+class NoteList(LoginRequiredMixin, ListView):
     model = Notes
     template_name = 'notes/list_notes.html'
     context_object_name = 'notes'
+    login_url = "/admin"
+
+    def get_queryset(self):
+        return self.request.user.notes.all()
 
 
 class NoteDetail(DetailView):
